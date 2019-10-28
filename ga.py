@@ -1,5 +1,6 @@
 from knn import *
 
+#Função que le o arquivo.
 def readDataFun(fileName): 
   
     data = [] 
@@ -12,6 +13,7 @@ def readDataFun(fileName):
 
     return data 
 
+#Função que cria o arquivo de saida para usar no knn.
 def createOutput(caract):
     f = open('train.txt','w')
 
@@ -19,6 +21,7 @@ def createOutput(caract):
         f.write(str(i))
     f.close()
 
+#Função que seleciona os pais de base para o ag.
 def selectParents(data,comp):
     seed = 60
     identify = []
@@ -48,11 +51,13 @@ def selectParents(data,comp):
 
     combinationParents(data,numSelect)
 
+#Função que seleciona a característica que vai ser modificada
 def mutation(train):
 
     select = randint(0,train)
     return select;
 
+#Função que faz a combinação afim de melhorar a accuracy.
 def combinationParents(data,numSelect):
     seed = 20
     result = 0.0
@@ -115,6 +120,7 @@ def combinationParents(data,numSelect):
         result = main_knn(3,'combination.txt',300)
         numGeneration += 1
 
+#Função main.
 def main():
 
     data = readDataFun('treinamento.txt')
